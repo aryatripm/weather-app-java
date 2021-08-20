@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ScrollingActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
+        android:theme="@style/Theme.Weather.AppBarOverlay">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            style="@style/Theme.Weather.CollapseBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fitsSystemWindows="true"
+            android:elevation="10dp"
+            android:background="@drawable/bg_toolbar"
+            app:title="@string/app_name"
+            app:contentScrim="@android:color/transparent"
+            app:layout_scrollFlags="noScroll|enterAlwaysCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <include
+                android:id="@+id/toolbar_content"
+                layout="@layout/toolbar_content"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="parallax"
+                android:background="@android:color/transparent"
+                app:popupTheme="@style/Theme.Weather.PopupOverlay" >
+
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/app_bar_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:elevation="10dp"
+                    android:background="@drawable/bg_search"
+                    android:imeOptions="actionSearch"
+                    app:iconifiedByDefault="false"
+                    app:searchIcon="@drawable/ic_baseline_location_on_24"
+                    app:queryHint="Search city..."
+                    android:gravity="center"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include
+        android:id="@+id/content"
+        layout="@layout/content_scrolling" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fab_margin"
+        app:layout_anchor="@id/toolbar_layout"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_baseline_refresh_24"
+        app:rippleColor="@color/primaryTextColor"
+        android:contentDescription="@string/reload_weather" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
